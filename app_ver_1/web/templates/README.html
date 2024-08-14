@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="api-documentation">API Documentation</h1>
+<h2 id="print-api">Print API</h2>
+<h3 id="api-details">API details</h3>
+<ol>
+<li>url: http://print.familyhardware.com/api/1/print/</li>
+<li>method: POST</li>
+<li>Request Body in JSON format:</li>
+</ol>
+<pre class="hljs"><code><div>{
+    <span class="hljs-string">"devicemac"</span>: <span class="hljs-string">"00:11:62:30:41:cd"</span>,
+    <span class="hljs-string">"drawer"</span>: {
+        <span class="hljs-string">"openAt"</span>: <span class="hljs-string">"START"</span>
+    },
+    <span class="hljs-string">"buzzerCount"</span>: {
+        <span class="hljs-string">"start"</span>: <span class="hljs-number">2</span>
+    },
+    <span class="hljs-string">"print_json"</span>: [
+        {
+            <span class="hljs-string">"align"</span>: <span class="hljs-string">"left"</span>,
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"IMAGE"</span>,
+            <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://star-emea.com/wp-content/uploads/2015/01/logo.jpg"</span>,
+            <span class="hljs-string">"width"</span>: <span class="hljs-string">"60%"</span>,
+            <span class="hljs-string">"min_width"</span>: <span class="hljs-string">"48mm"</span>
+        },
+        {
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"LINE"</span>,
+            <span class="hljs-string">"mode"</span>: <span class="hljs-string">"UP"</span>
+        },
+        {
+            <span class="hljs-string">"align"</span>: <span class="hljs-string">"centre"</span>,
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"CONTENT"</span>,
+            <span class="hljs-string">"content"</span>: [
+                <span class="hljs-string">""</span>,
+                <span class="hljs-string">"&lt;w3h3&gt;&lt;b&gt;Family Hardware&lt;/b&gt;&lt;/w3h3&gt;"</span>,
+                <span class="hljs-string">""</span>
+                ]
+        },
+        {
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"LINE"</span>,
+            <span class="hljs-string">"mode"</span>: <span class="hljs-string">"DOWN"</span>
+        },
+        {
+            <span class="hljs-string">"align"</span>: <span class="hljs-string">"centre"</span>,
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"CONTENT"</span>,
+            <span class="hljs-string">"content"</span>: [
+                <span class="hljs-string">"FamilyHardware"</span>,
+                <span class="hljs-string">"Address 1"</span>,
+                <span class="hljs-string">"Address 2"</span>,
+                <span class="hljs-string">"Phone number"</span>,
+                <span class="hljs-string">""</span>
+            ]
+        },
+        {
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"LINE"</span>,
+            <span class="hljs-string">"mode"</span>: <span class="hljs-string">"UP"</span>
+        },
+        {
+            <span class="hljs-string">"align"</span>: <span class="hljs-string">"left"</span>,
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"COLUMNS"</span>,
+            <span class="hljs-string">"value"</span>: {
+                <span class="hljs-string">"indent"</span>: <span class="hljs-string">"0mm"</span>,
+                <span class="hljs-string">"columns"</span>: [
+                    {
+                        <span class="hljs-string">"left"</span>: <span class="hljs-string">"SKU"</span>,
+                        <span class="hljs-string">"short"</span>: <span class="hljs-string">"item 1"</span>,
+                        <span class="hljs-string">"right"</span>: <span class="hljs-string">"price"</span>,
+                        <span class="hljs-string">"sub"</span>:[
+                            {
+                                <span class="hljs-string">"left"</span>: <span class="hljs-string">"Item Name"</span>,
+                                <span class="hljs-string">"right"</span>: <span class="hljs-string">"Quantity"</span>
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"LINE"</span>,
+            <span class="hljs-string">"mode"</span>: <span class="hljs-string">"DASHED"</span>
+        },
+        {
+            <span class="hljs-string">"align"</span>: <span class="hljs-string">"left"</span>,
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"COLUMNS"</span>,
+            <span class="hljs-string">"value"</span>: {
+                <span class="hljs-string">"indent"</span>: <span class="hljs-string">"0mm"</span>,
+                <span class="hljs-string">"columns"</span>: [
+                    {
+                        <span class="hljs-string">"left"</span>: <span class="hljs-string">"SKU 1232131"</span>,
+                        <span class="hljs-string">"short"</span>: <span class="hljs-string">"item 1"</span>,
+                        <span class="hljs-string">"right"</span>: <span class="hljs-string">"$0.20"</span>,
+                        <span class="hljs-string">"sub"</span>:[
+                            {
+                                <span class="hljs-string">"left"</span>: <span class="hljs-string">"one item"</span>,
+                                <span class="hljs-string">"right"</span>: <span class="hljs-string">"x 12"</span>
+                            }
+                        ]
+                    },
+                    {
+                        <span class="hljs-string">"left"</span>: <span class="hljs-string">"SKU 342422"</span>,
+                        <span class="hljs-string">"short"</span>: <span class="hljs-string">"item 2"</span>,
+                        <span class="hljs-string">"right"</span>: <span class="hljs-string">"$0.30"</span>,
+                        <span class="hljs-string">"sub"</span>:[
+                            {
+                                <span class="hljs-string">"left"</span>: <span class="hljs-string">"two item"</span>,
+                                <span class="hljs-string">"right"</span>: <span class="hljs-string">"x 12"</span>
+                            }
+                        ]
+                    },
+                    {
+                        <span class="hljs-string">"left"</span>: <span class="hljs-string">"item name 3"</span>,
+                        <span class="hljs-string">"short"</span>: <span class="hljs-string">"item 2"</span>,
+                        <span class="hljs-string">"right"</span>: <span class="hljs-string">"$0.40"</span>,
+                        <span class="hljs-string">"sub"</span>:[
+                            {
+                                <span class="hljs-string">"left"</span>: <span class="hljs-string">"third item"</span>,
+                                <span class="hljs-string">"right"</span>: <span class="hljs-string">"x 12"</span>
+                            }
+                        ]
+                    },
+                    {
+                        <span class="hljs-string">"left"</span>: <span class="hljs-string">"item name 4"</span>,
+                        <span class="hljs-string">"short"</span>: <span class="hljs-string">"item 4"</span>,
+                        <span class="hljs-string">"right"</span>: <span class="hljs-string">"$0.50"</span>,
+                        <span class="hljs-string">"sub"</span>:[
+                            {
+                                <span class="hljs-string">"left"</span>: <span class="hljs-string">"fourth item"</span>,
+                                <span class="hljs-string">"right"</span>: <span class="hljs-string">"x 12"</span>
+                            }
+                        ]
+                    },
+                    {
+                        <span class="hljs-string">"left"</span>: <span class="hljs-string">"item name 3"</span>,
+                        <span class="hljs-string">"short"</span>: <span class="hljs-string">"item 2"</span>,
+                        <span class="hljs-string">"right"</span>: <span class="hljs-string">"$0.40"</span>,
+                        <span class="hljs-string">"sub"</span>:[
+                            {
+                                <span class="hljs-string">"left"</span>: <span class="hljs-string">"fifth item"</span>,
+                                <span class="hljs-string">"right"</span>: <span class="hljs-string">"x 12"</span>
+                            }
+                        ]
+                    },
+                    {
+                        <span class="hljs-string">"left"</span>: <span class="hljs-string">"item name 4"</span>,
+                        <span class="hljs-string">"short"</span>: <span class="hljs-string">"item 4"</span>,
+                        <span class="hljs-string">"right"</span>: <span class="hljs-string">"$0.50"</span>
+                    }
+                ]
+            }
+        },
+        {
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"LINE"</span>,
+            <span class="hljs-string">"mode"</span>: <span class="hljs-string">"DASHED"</span>
+        },
+        {
+            <span class="hljs-string">"align"</span>: <span class="hljs-string">"right"</span>,
+            <span class="hljs-string">"type"</span>: <span class="hljs-string">"CONTENT"</span>,
+            <span class="hljs-string">"content"</span>: [
+                <span class="hljs-string">""</span>,
+                <span class="hljs-string">"Total Amount:  $30"</span>,
+                <span class="hljs-string">""</span>
+            ]
+        }
+    ]
+}
+</div></code></pre>
+<ol start="4">
+<li>Response:</li>
+</ol>
+<pre class="hljs"><code><div>{
+    <span class="hljs-string">"message"</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-string">"position"</span>: <span class="hljs-string">"189"</span>
+}
+</div></code></pre>
+<h3 id="request-fields-in-details">Request fields in details</h3>
+<ol>
+<li>
+<p>devicemac <em>string</em></p>
+<p>Takes device mac address only. e.g. 00:11:62:30:41:cd</p>
+</li>
+<li>
+<p>Drawer <em>dict</em></p>
+<ol>
+<li>
+<p>Drawer open has 2 modes, at start and at the end.</p>
+</li>
+<li>
+<p><code>openAt</code> accepts 3 values <em><code>START|END|NONE</code></em>.</p>
+</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-string">"drawer"</span>: {
+    <span class="hljs-string">"openAt"</span>: <span class="hljs-string">"START"</span>
+}
+</div></code></pre>
+</li>
+<li>
+<p>Buzzer counts</p>
+<ol>
+<li>
+<p>It has 2 keys, at the start and at the end.\</p>
+</li>
+<li>
+<p>The keys take integers as values to determine the number of times it should buzz.</p>
+</li>
+<li>
+<p>Maximum value allowed is 20.</p>
+</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-string">"buzzerCount"</span>: {
+    <span class="hljs-string">"start"</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-string">"end"</span>: <span class="hljs-number">3</span>
+}
+</div></code></pre>
+</li>
+<li>
+<p>print_json <em>list of dictionaries</em></p>
+<p>List of dictionaries of different item types. We would first define what is &quot;<code>type</code>&quot;.
+<code>type</code> is a requried field of every dictionary within each list of <code>print_json</code> field.
+<code>type</code>s are as followed:</p>
+<ol>
+<li>
+<p><code>CONTENT</code></p>
+<pre class="hljs"><code><div>{
+	<span class="hljs-string">"type"</span>: <span class="hljs-string">"CONTENT"</span>,
+    <span class="hljs-string">"align"</span>: <span class="hljs-string">"centre"</span>,
+    <span class="hljs-string">"content"</span>: [
+        <span class="hljs-string">""</span>,
+        <span class="hljs-string">"&lt;w3h3&gt;&lt;b&gt;Family Hardware&lt;/b&gt;&lt;/w3h3&gt;"</span>,
+        <span class="hljs-string">""</span>
+        ]
+}
+</div></code></pre>
+<p>We have the <code>type</code> field, which has a <code>CONTENT</code> value. This dictionary type has valid fields as followed:</p>
+<ol>
+<li>type: <code>*CONTENT*</code></li>
+<li>content <em>list of string. Empty string will be considered as a new line.</em></li>
+<li>align <em><code>left|right|centre</code></em>
+<br /><br /></li>
+</ol>
+<p>Tags in <code>type</code> as <em><code>CONTENT</code></em>:</p>
+<ol>
+<li>Bold: As an example <code>&lt;b&gt;Hello World&lt;b&gt;</code> is a valid value.</li>
+<li>Text Size: Content can be sized by adjusting the heifht and width of the text elements.
+e.g. <code>&lt;w2h2&gt;Hello&lt;/w2h2&gt; world</code> will increase the width of the hello twice the width and height of the standard text of the printout.
+<br/><br/></li>
+</ol>
+<p><strong>Tags ranging from <w1h1> to <w9h9> are valid tags.</strong>
+<strong>Tags are only valid for <code>type</code> as <code>CONTENT</code></strong></p>
+</li>
+<li>
+<p><code>IMAGE</code></p>
+<pre class="hljs"><code><div>{
+	<span class="hljs-string">"type"</span>: <span class="hljs-string">"IMAGE"</span>,
+    <span class="hljs-string">"align"</span>: <span class="hljs-string">"left"</span>,
+    <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://star-emea.com/wp-content/uploads/2015/01/logo.jpg"</span>,
+    <span class="hljs-string">"width"</span>: <span class="hljs-string">"60%"</span>,
+    <span class="hljs-string">"min_width"</span>: <span class="hljs-string">"48mm"</span>
+}
+</div></code></pre>
+<p>The <code>type</code> field has <code>IMAGE</code> as it's value. This dictionary represents the image content.</p>
+<p>This dictionary has following valid fields:</p>
+<ol>
+<li>
+<p>type: <em>IMAGE</em></p>
+</li>
+<li>
+<p>align: <em>left|right|centre</em></p>
+</li>
+<li>
+<p>url: <em>link to any image file</em></p>
+</li>
+<li>
+<p>width: <em>in percentage</em></p>
+</li>
+<li>
+<p>min_width: It will overwrite the size of the image if the size calcualated from the image percentage is less than min_width.</p>
+</li>
+</ol>
+</li>
+<li>
+<p><code>COLUMNS</code>:</p>
+<pre class="hljs"><code><div>{
+	<span class="hljs-string">"type"</span>: <span class="hljs-string">"COLUMNS"</span>,
+    <span class="hljs-string">"align"</span>: <span class="hljs-string">"left"</span>,
+    <span class="hljs-string">"value"</span>: {
+        <span class="hljs-string">"indent"</span>: <span class="hljs-string">"0mm"</span>,
+        <span class="hljs-string">"columns"</span>: [
+            {
+                <span class="hljs-string">"left"</span>: <span class="hljs-string">"SKU"</span>,
+                <span class="hljs-string">"short"</span>: <span class="hljs-string">"item 1"</span>,
+                <span class="hljs-string">"right"</span>: <span class="hljs-string">"price"</span>,
+                <span class="hljs-string">"sub"</span>:[
+                    {
+                        <span class="hljs-string">"left"</span>: <span class="hljs-string">"Item Name"</span>,
+                        <span class="hljs-string">"right"</span>: <span class="hljs-string">"Quantity"</span>
+                    }
+                ]
+            }
+        ]
+    }
+}
+</div></code></pre>
+<p>The <code>type</code> field has <code>COLUMNS</code> as its value. This dictionary represents the columns content.</p>
+<p>Valid fields:</p>
+<ol>
+<li>
+<p>type: <code>COLUMNS</code></p>
+</li>
+<li>
+<p>align: <code>left|right|centre</code></p>
+</li>
+<li>
+<p>value: <code>dict</code></p>
+<ol>
+<li>
+<p>indent: Space indent from left to right in mm. e.g. 40mm</p>
+</li>
+<li>
+<p>columns: <code>list of rows as dictionary</code></p>
+<ol>
+<li>
+<p>left: left column value</p>
+</li>
+<li>
+<p>right: right column value</p>
+</li>
+<li>
+<p>short: If the left value has more characters than it could fit in the paper then short would woverride left value and visible in the print.</p>
+</li>
+<li>
+<p>sub: list of subrows</p>
+<ol>
+<li>left: left column value of the subrow.</li>
+<li>right: right column value of the subrow.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p><code>Line</code>:</p>
+<pre class="hljs"><code><div>{
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"LINE"</span>,
+    <span class="hljs-string">"mode"</span>: <span class="hljs-string">"DASHED"</span>
+},
+</div></code></pre>
+<p>The <code>type</code> field has <code>LINE</code> as it's value. This dictionary represents line in the print outs.</p>
+<p>Valid fields:</p>
+<ol>
+<li>type: <code>LINE</code></li>
+<li>mode: <em><code>DASHED|UP|DOWN</code></em></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+</body>
+</html>

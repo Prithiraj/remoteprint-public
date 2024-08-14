@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Print a ticket</title>
+        <link href="{{ url_for('api_ver_stable.static', filename='css/cpphp.css') }}" rel="stylesheet" />
+        <script src="{{ url_for('api_ver_stable.static', filename='/js/jquery-3.6.0.min.js')}}"></script>
+        <script>
+            var urlParams = new URLSearchParams(window.location.search);
+            var printer = urlParams.get('devicemac');
+
+            function PrintATicket() {
+                $.ajax({
+                    type: "POST",
+                    url: "/api/stable/print",
+                    contentType: 'application/json;charset=UTF-8',
+                    data: JSON.stringify({"devicemac": printer}),
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            }
+
+        </script>
+    </head>
+
+    <body>
+
+        <h1>Please take a ticket</h1>
+        <div class="printButton" onclick="PrintATicket();">
+            Print
+        </div>
+
+    </body>
+</html>
